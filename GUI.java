@@ -19,11 +19,16 @@ public class GUI {
         // Initializes window
         window = new JFrame("Simple Metronome");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setPreferredSize(new Dimension(640, 480));
 
         panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
+        window.add(panel);
 
+        window.pack();
+        window.setVisible(true);
 
+        
     }
 }
