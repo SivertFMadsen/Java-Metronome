@@ -1,0 +1,14 @@
+Beskrivelse:
+Metronom med justerbar BPM
+
+Krav:
+Trenger knapper for å øke og senke BPM
+Knapp for å starte og stoppe metronomen
+Visuell og auditiv feedback
+
+Ønsker:
+Slider i tillegg til knapper
+
+Problemer:
+Hvordan spiller man lyd med Java? Kan jeg generere en sinustone?
+Hvordan få vinduet til å se bra ut?

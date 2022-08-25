@@ -6,11 +6,15 @@ public class GUI {
 
     JFrame window;
     JPanel panel, visual, input;
-    JLabel beater, BPM;
+    JLabel beater, BPMLabel;
     JButton plus, minus, ss;
+    int BPM;
+    Controller controller;
 
 
     public GUI() {
+
+        BPM = 100;
 
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
@@ -43,6 +47,9 @@ public class GUI {
         window.add(input, BorderLayout.SOUTH);
         // TODO: switch to grid?
 
+        // Initializes controller
+        controller = new Controller(this);
+
         class ChangeBPM implements ActionListener {
             int change;
 
@@ -52,7 +59,7 @@ public class GUI {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: notify controller to update model
+                controller.updateBPM(change);
             }
         }
 
@@ -66,10 +73,10 @@ public class GUI {
         minus.addActionListener(new ChangeBPM(-1));
         input.add(minus, BorderLayout.WEST);
 
-        BPM = new JLabel("100");
+        BPMLabel = new JLabel(Integer.toString(BPM));
         // TODO: text should be based on current BPM
-        BPM.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
-        input.add(BPM, BorderLayout.CENTER);
+        BPMLabel.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
+        input.add(BPMLabel, BorderLayout.CENTER);
 
         class StartStop implements ActionListener {
 
@@ -97,4 +104,9 @@ public class GUI {
         window.setVisible(true);
 
     }
+
+    public void setBPM(int newBPM) {
+        BPMLabel.setText(Integer.toString(newBPM));
+    }
+
 }
