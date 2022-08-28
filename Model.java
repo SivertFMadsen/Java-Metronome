@@ -16,4 +16,9 @@ public class Model {
         BPM += change;
         gui.setBPM(BPM);
     }
+
+    public void setBPM(int newBPM) {
+        BPM = newBPM;
+        gui.setBPM(BPM);
+    }
 }
