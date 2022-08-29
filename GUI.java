@@ -139,6 +139,8 @@ public class GUI {
                     System.out.println("Metronome starts. Current BPM: " + BPM);
                     ss.setText("STOP");
                     // TODO: notify controller to start metronome
+                    run();
+                    
                 } else {
                     System.out.println("Metronome stops.");
                     ss.setText("START");
@@ -156,35 +158,41 @@ public class GUI {
         while the meteronome is running
         */
 
-        // class ResetColor implements ActionListener {
+        class ResetColor implements ActionListener {
 
-        //     @Override
-        //     public void actionPerformed(ActionEvent e) {
-        //         beater.setBackground(Color.RED);
-        //     }
-        // }
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                beater.setBackground(Color.RED);
+            }
+        }
 
-        // class Blinker implements ActionListener {
+        class Blinker implements ActionListener {
 
-        //     Timer blinkTimer;
-        //     int beats = 0;
-        //     double BPMDelay;
-        //     // this is temporary
+            Timer blinkTimer;
+            // int beats = 0;
+            // double BPMDelay;
+            // this is temporary
 
-        //     @Override
-        //     public void actionPerformed(ActionEvent e) {
-        //         beats += 1;
-        //         BPMDelay = 6000/BPM;
-        //         if (beats%BPMDelay == 0) {
-        //             beats = 0;
-        //             System.out.println("beat");
-        //             beater.setBackground(Color.GREEN);
-        //             blinkTimer = new Timer(20, new ResetColor());
-        //             blinkTimer.setRepeats(false);
-        //             blinkTimer.start();
-        //         }
-        //     }
-        // }
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                beater.setBackground(Color.GREEN);
+                blinkTimer = new Timer(20, new ResetColor());
+                blinkTimer.setRepeats(false);
+                blinkTimer.start();
+
+                // beats += 1;
+                // BPMDelay = 6000/BPM;
+                // if (beats%BPMDelay == 0) {
+                //     beats = 0;
+                //     System.out.println("beat");
+                //     beater.setBackground(Color.GREEN);
+                //     blinkTimer = new Timer(20, new ResetColor());
+                //     blinkTimer.setRepeats(false);
+                //     blinkTimer.start();
+                // }
+            }
+        }
 
         // timer = new Timer(10, new Blinker());
         // timer.start();
@@ -206,5 +214,11 @@ public class GUI {
             return false;
         }
         return true;
+    }
+
+    public void run() {
+        int BPMDelay = 60000/BPM;
+        timer = new Timer(BPMDelay, new Blinker(this, beater));
+        timer.start();
     }
 }
