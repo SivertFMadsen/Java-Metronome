@@ -5,12 +5,10 @@ import javax.swing.*;
 public class Controller {
     Model model;
     GUI gui;
-    boolean isRunning;
 
     public Controller(GUI g) {
         gui = g;
         model = new Model(gui);
-        isRunning = false;
     }
 
     public void updateBPM(int change) {
@@ -22,10 +20,6 @@ public class Controller {
     }
 
     public void changeState() {
-        if (isRunning) {
-            isRunning = false;
-        } else {
-            isRunning = true;
-        }
+        model.changeState();
     }
 }
