@@ -12,8 +12,8 @@ public class GUI {
     Controller controller;
     int BPM;
     String lvBPM;
-    Timer timer;
     // last valid BPM
+    Timer timer;
 
     public GUI() {
 
@@ -55,6 +55,7 @@ public class GUI {
 
         class ChangeBPM implements ActionListener {
             int change;
+            int newBPM;
 
             public ChangeBPM(int c) {
                 change = c;
@@ -62,7 +63,8 @@ public class GUI {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.updateBPM(change);
+                newBPM = BPM + change;
+                controller.setBPM(newBPM);
             }
         }
 
@@ -114,7 +116,9 @@ public class GUI {
             // Starts and stops the metronome, and changes the text on the button
 
             String BPMS;
+            // The current displayed BPM
             int BPMIn;
+            // Integer representation of the above String (if format is correct)
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -145,6 +149,7 @@ public class GUI {
                 }
 
                 controller.changeState();
+                // Tells the controller to start or stop the metronome
             }
         }
 
@@ -163,7 +168,6 @@ public class GUI {
     }
 
     public boolean checkInput(String inp) {
-
         try {
             Integer.parseInt(inp);
         } catch (NumberFormatException nfe) {

@@ -11,9 +11,9 @@ public class Controller {
         model = new Model(gui);
     }
 
-    public void updateBPM(int change) {
-        model.changeBPM(change);
-    }
+    // public void updateBPM(int change) {
+    //     model.changeBPM(change);
+    // }
 
     public void setBPM(int newBPM) {
         model.setBPM(newBPM);

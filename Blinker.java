@@ -8,7 +8,7 @@ class Blinker implements ActionListener {
     GUI gui;
     JLabel beater;
     int blinkTime;
-    // Determines for how long the beater will stay green
+    // Determines for how long (in milliseconds) the beater will stay green
 
     public Blinker(GUI g, JLabel b) {
         gui = g;

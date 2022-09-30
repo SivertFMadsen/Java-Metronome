@@ -18,14 +18,14 @@ public class Model {
         return BPM;
     }
 
-    public void changeBPM(int change) {
-        BPM += change;
-        gui.setBPM(BPM);
-    }
-
     public void setBPM(int newBPM) {
         BPM = newBPM;
         gui.setBPM(BPM);
+        if (isRunning) {
+            // Updates the current BPM while metronome is running
+            gui.stop();
+            gui.run();
+        }
     }
 
     public void changeState() {
